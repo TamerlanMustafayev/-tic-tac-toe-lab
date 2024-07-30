@@ -1,0 +1,54 @@
+
+
+
+
+:root {
+  --primary-color: #180161;
+  --secondary-color: #2ecc71;
+  --text-color: #5ff57b;
+  --X:#39b6e0;
+}
+
+
+body {
+    margin: 0;
+    height: 100vh;
+    background-color:var(--primary-color);
+    font-family:sans-serif;
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .board {
+    display: flex;
+    flex-wrap: wrap;
+    width: 20%;
+    margin-bottom: 80px;
+    
+  }
+  
+  .sqr {
+    cursor: pointer;
+    width: 30%;
+    color: #fff;
+    aspect-ratio: 1/1;
+    border: 1px solid var(--primary-color);
+    border-radius: 10px;
+    font-size: 64px;
+    text-align: center;
+    transition: all 200ms ease-in-out;
+  }
+
+  .sqr:hover {
+    scale: 1.1;
+    box-shadow:  0px 0px 95px 0px rgba(255,255,255,0.4);;
+  }
+
+
+
+  
+
+  
