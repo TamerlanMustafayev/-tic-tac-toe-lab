@@ -3,6 +3,7 @@
 
 const squareEls = document.querySelectorAll('.sqr')
 const messageEl = document.querySelector('#message')
+const resetBtnEL = document.querySelector('#reset')
 
 const winningCombos = [
     [0, 1, 2],
@@ -137,10 +138,12 @@ function updateMessage() {
     }
 }
 
-// updateMessage()
+
+
+
 
 function init() {
-
+ 
     updateBoard()
     updateMessage()
 }
