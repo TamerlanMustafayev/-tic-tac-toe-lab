@@ -37,6 +37,7 @@ let board = [
 /*------------------------ Cached Element References ------------------------*/
 
 
+resetBtnEL.addEventListener('click', init)
 
 /*-------------------------------- Functions --------------------------------*/
 
@@ -65,7 +66,6 @@ function updateBoard() {
 /// HANDLE CLICK
 
 function handleClick(event) {
-    
     const squareIndex = event.target.id
 
     if (board[squareIndex] !== '' || winner) {
@@ -86,21 +86,15 @@ squareEls.forEach((squareEl ) => {
 
 function placePiece(index) {
     board[index] = turn
-
 }
 
-/////////////
-
-
-
 function checkForWinner() {
-    
     winningCombos.forEach(winningCombo => {
-        let combo = winningCombo
+        
         if (
-            board[combo[0]] !== '' &&
-            board[combo[0]] === board[combo[1]] &&
-            board[combo[1]] === board[combo[2]] 
+            board[winningCombo[0]] !== '' &&
+            board[winningCombo[0]] === board[winningCombo[1]] &&
+            board[winningCombo[1]] === board[winningCombo[2]] 
         )
 
         {
@@ -110,14 +104,11 @@ function checkForWinner() {
     })
 }
 
-
-
 function checkForTie() {
     tie = board.every(square => square !== '') && !winner;
 } 
 
 function switchPlayerTurn() {
-
     if (!winner) {
         if (turn === 'X') {
             turn = 'O'
@@ -126,7 +117,6 @@ function switchPlayerTurn() {
         }
     }
 }
-
 
 function updateMessage() {
     if (!winner && !tie) {
@@ -138,14 +128,14 @@ function updateMessage() {
     }
 }
 
+function render() {
 
-
-
-
-function init() {
- 
     updateBoard()
     updateMessage()
+}
+
+function init() {
+    render()
 }
 
 
