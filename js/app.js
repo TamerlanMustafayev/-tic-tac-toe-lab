@@ -20,10 +20,9 @@ const winningCombos = [
 
 
 /*---------------------------- Variables (state) ----------------------------*/
-let turn = 'X'
-let winner = false
-let tie = false
-let currentCell
+let turn
+let winner
+let tie 
 
 let board = [
     '', '', '',
@@ -36,8 +35,12 @@ let board = [
 
 /*------------------------ Cached Element References ------------------------*/
 
+squareEls.forEach((squareEl ) => {
+    squareEl.addEventListener('click', handleClick)
+})
 
 resetBtnEL.addEventListener('click', init)
+
 
 /*-------------------------------- Functions --------------------------------*/
 
@@ -46,18 +49,16 @@ resetBtnEL.addEventListener('click', init)
 
 function updateBoard() {
     board.forEach((square, index) => {
+        const currentCell = document.getElementById(index)
         if (square === 'X') {
-            currentCell = document.getElementById(index)
             currentCell.style.backgroundColor = '#EB3678'
             currentCell.innerHTML = square
         } else if (square === 'O') {
-            currentCell = document.getElementById(index)
             currentCell.style.backgroundColor = '#FB773C'
             currentCell.innerHTML = square
-        } else if (square === '') {
-            currentCell = document.getElementById(index)
-            currentCell.style.backgroundColor = '#39b6e0'
-            
+        } else  {
+            currentCell.style.backgroundColor = '#39b6e0'  
+            currentCell.innerText = ''
         }
     })
 }
@@ -80,9 +81,7 @@ function handleClick(event) {
 }
 
 
-squareEls.forEach((squareEl ) => {
-    squareEl.addEventListener('click', handleClick)
-})
+
 
 function placePiece(index) {
     board[index] = turn
@@ -129,19 +128,25 @@ function updateMessage() {
 }
 
 function render() {
-
     updateBoard()
     updateMessage()
 }
 
 function init() {
+    board = [
+        '', '', '',
+        '', '', '',
+        '', '', '',
+    ]
+    turn = 'X'
+    winner = false
+    tie = false
     render()
 }
 
 
 
 init()
-
 /*----------------------------- Event Listeners -----------------------------*/
 
 
